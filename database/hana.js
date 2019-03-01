@@ -7,7 +7,7 @@ const pool   = require('./pool');
 
 exports.select = function (sql, callback) {
     config.logger.debug(sql);
-    pool.acquire()
+    pool.getConnection()
         .then(function(client) {
             client.exec(sql, (err, rows) => {
                 pool.release(client);
@@ -29,7 +29,7 @@ exports.select = function (sql, callback) {
 
 exports.insert = function (sql, callback) {
     config.logger.debug(sql);
-    pool.acquire()
+    pool.getConnection()
         .then(function(client) {
             client.exec(sql, (err, affectedRows) => {
                 pool.release(client);
@@ -51,7 +51,7 @@ exports.insert = function (sql, callback) {
 
 exports.update = function (sql, callback) {
     config.logger.debug(sql);
-    pool.acquire()
+    pool.getConnection()
         .then(function(client) {
             client.exec(sql, (err, affectedRows) => {
                 pool.release(client);
@@ -73,7 +73,7 @@ exports.update = function (sql, callback) {
 
 exports.delete = function (sql, callback) {
     config.logger.debug(sql);
-    pool.acquire()
+    pool.getConnection()
         .then(function(client) {
             client.exec(sql, (err, affectedRows) => {
                 pool.release(client);
@@ -96,7 +96,7 @@ exports.delete = function (sql, callback) {
 exports.bulkUpsert = function (sql, values, callback) {
     config.logger.debug(sql);
     config.logger.silly(values);
-    pool.acquire()
+    pool.getConnection()
         .then(function(client) {
             client.prepare(sql, (err, statement) => {
                 if (err) {

@@ -66,13 +66,13 @@ config.httpErrorLogger = expressWinston.errorLogger({
 config.logger = winston;
 
 config.NODE_ENV = process.env.NODE_ENV || 'development';
-config.ORIGIN_SERVER = 'xxx.xxx.xxx.xxx';
-config.ORIGIN_IP = 'xxx.xxx.xxx.xxx';
+config.ORIGIN_SERVER = 'hana-server-name';
+config.ORIGIN_IP = '0.0.0.0';
 config.HANA_SERVER = {
-    host: 'xxx.xxx.xxx.xxx',
+    hostName: 'hana-server-name',
     port: 30615,
-    user: 'HANA_OS_MONITOR_WEB',
-    password: 'xxxxx'
+    userName: 'HANA_OS_MONITOR_WEB',
+    password: 'password'
 };
 
 config.ACAO = ['*'];
