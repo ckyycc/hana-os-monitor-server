@@ -3,6 +3,7 @@ const bodyParser     = require('body-parser');
 const compression    = require('compression');
 const config         = require('./config/default');
 const serverRoute    = require('./server/server.route');
+const instanceRoute  = require('./instance/instance.route');
 const userRoute      = require('./admin/user.route');
 const sidRoute       = require('./admin/sid.route');
 const configRoute    = require('./admin/config.route');
@@ -80,6 +81,7 @@ app.use('/api/servers', serverRoute);
 app.use('/api/users', userRoute);
 app.use('/api/sids', sidRoute);
 app.use ('/api/configurations', configRoute);
+app.use('/api/instances', instanceRoute);
 
 app.all('*', function(req,res){
     res.status(200).sendFile(__dirname + '/client/index.html');
