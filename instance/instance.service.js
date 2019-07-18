@@ -15,6 +15,7 @@ class InstanceService {
                 callback(null, instances.map(instance => ({
                     serverName: instance.SERVER_NAME,
                     sid: instance.SID,
+                    instanceNum: instance.INSTANCE_NUM,
                     employeeName: instance.EMPLOYEE_NAME,
                     revision: instance.REVISION,
                     releaseSP: instance.RELEASE_SP,

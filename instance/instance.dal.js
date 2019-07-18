@@ -15,6 +15,7 @@ exports.getInstances = function(userId, callback) {
     let command = ` SELECT
                          SERVER_NAME,
                          SID,
+                         INSTANCE_NUM,
                          EMPLOYEE_NAME,
                          REVISION,
                          RELEASE_SP,
