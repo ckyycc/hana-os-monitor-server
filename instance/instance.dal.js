@@ -14,11 +14,12 @@ exports.getInstances = function(userId, callback) {
 
     let command = ` SELECT
                          SERVER_NAME,
+                         HOST,
                          SID,
                          INSTANCE_NUM,
                          EMPLOYEE_NAME,
                          REVISION,
-                         RELEASE_SP,
+                         EDITION,
                          MEM_USAGE_GB,
                          MEM_USAGE_RANK,
                          DISK_USAGE_GB,
@@ -27,7 +28,7 @@ exports.getInstances = function(userId, callback) {
                          CPU_USAGE_RANK,
                          OS,
                          CHECK_TIME
-                    FROM HANA_OS_MONITOR.M_SID_DETAIL_INFO 
+                    FROM HANA_OS_MONITOR.M_ALL_INSTANCE_DETAIL_INFO 
                     WHERE LOCATION_ID IN (
 					              SELECT LOCATION_ID FROM HANA_OS_MONITOR.EMPLOYEE_LOCATION_INFO WHERE EMPLOYEE_ID = '${userId}') 
                     ORDER BY LOCATION_ID desc, SERVER_NAME, SID`;
